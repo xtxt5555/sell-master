@@ -1,0 +1,72 @@
+<template>
+  <div class="shop-cart-sticky" v-show="visible">
+    <shop-cart
+      :deliveryPrice="deliveryPrice"
+      :minPrice="minPrice"
+      :selectFoods="selectFoods"
+      ref="shopCart"
+      :fold="fold"
+      :sticky="true"
+    ></shop-cart>
+  </div>
+</template>
+
+<script lang="ecmascript-6">
+import ShopCart from 'components/shop-cart/shop-cart'
+import popupMixin from 'common/js/popupMixin'
+
+export default {
+  name: 'shop-cart-sticky',
+  components: {
+    ShopCart
+  },
+  mixins: [popupMixin],
+  props: {
+    selectFoods: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    deliveryPrice: {
+      type: Number,
+      default() {
+        return 0
+      }
+    },
+    minPrice: {
+      type: Number,
+      default() {
+        return 0
+      }
+    },
+    fold: {
+      type: Boolean,
+      default() {
+        return true
+      }
+    },
+    list: {
+      type: Object,
+      default() {
+        return {}
+      }
+    }
+  },
+  methods: {
+    drop(el) {
+      this.$refs.shopCart.drop(el)
+    }
+  }
+}
+</script>
+
+<style lang="stylus" scoped>
+  .shop-cart-sticky
+    position: absolute
+    left: 0
+    bottom: 0
+    z-index: 999
+    width: 100%
+    height: 48px
+</style>

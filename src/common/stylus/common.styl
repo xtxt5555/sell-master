@@ -1,0 +1,19 @@
+@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3)
+  .border-1px
+    &::after
+      -webkit-transform: scaleY(0.333)
+      transform: scaleY(0.333)
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2)
+  .border-1px
+    &::after
+      -webkit-transform: scaleY(0.5)
+      transform: scaleY(0.5)
+      
+.clear-fix
+  &:after
+    content: ''
+    display: block
+    visibility: hidden
+    zoom: 1
+    clear: both
